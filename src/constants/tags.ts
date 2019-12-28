@@ -1,6 +1,7 @@
 const TAG = {
 	JobView: "JobView",
-	JobGetHttpApplication: "JobGetHttpApplication"
+	JobGetHttpApplication: "JobGetHttpApplication",
+	JobService: "JobService"
 }
 
 export default TAG;
