@@ -15,16 +15,13 @@ class JobGetHttpApplication implements Application{
 		@multiInject(SERVICE_IDENTIFIER.RestView) restViews: BaseRestViewInterface[]
 	){
 		this.restViews = restViews;
-		this.application = express()
+		this.application = express();
 		this.application.use(bodyParser.json());
 	
 	}
 
 	public configure(): void{
-		this.restViews.forEach(function (value){
-			value.registerRoutes(this.app);
-		})
-
+		this.restViews.forEach((value) => { value.registerRoutes(this.application) });
 	}
 
 }
