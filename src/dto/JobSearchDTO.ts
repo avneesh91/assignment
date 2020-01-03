@@ -17,7 +17,7 @@ const getNeuvooQueryStringFromDTO = (searchCriteria: JobSearchDTO) => {
 	let neuvooQueryString = 'contentType=sponsored&format=json&publisher=dc134fad&cpcfloor=1';
 	
 	// location string
-	let locationString =`l=${searchCriteria.city}, ${searchCriteria.state}&radius=${searchCriteria.radius}`;
+	let locationString =`l=${searchCriteria.city},${searchCriteria.state}&radius=${searchCriteria.radius}`;
 
 	// adding pagination information
 	let paginationString = `start=${searchCriteria.page}&limit=${searchCriteria.jobsPerPage}`;
@@ -33,7 +33,7 @@ const getNeuvooQueryStringFromDTO = (searchCriteria: JobSearchDTO) => {
 }
 
 
-const createJobSearchDTO = (queryParams: {string: string}) => {
+const createJobSearchDTO = (queryParams) => {
 
 	let searchObject = new JobSearchDTO();
 
