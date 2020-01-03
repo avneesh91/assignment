@@ -1,5 +1,5 @@
 const requiredKeys: Array<string> = ['country', 'ip', 'user_agent', 'searchTerm', 'city', 'state', 'country'];
-const integerKeys: Array<string> = ['pages', 'jobs_per_page'];
+const integerKeys: Array<string> = ['page', 'jobs_per_page', 'radius'];
 
 class JobSearchDTO{
 	public searchTerm: string;
@@ -17,13 +17,17 @@ const getNeuvooQueryStringFromDTO = (searchCriteria: JobSearchDTO) => {
 	let neuvooQueryString = 'contentType=sponsored&format=json&publisher=dc134fad&cpcfloor=1';
 	
 	// location string
-	let locationString =`l=${searchCriteria.city}, ${searchCriteria.state}`;
+	let locationString =`l=${searchCriteria.city}, ${searchCriteria.state}&radius=${searchCriteria.radius}`;
+
+	// adding pagination information
+	let paginationString = `start=${searchCriteria.page}&limit=${searchCriteria.jobsPerPage}`;
 
 	// Adding compulsory fields
 	neuvooQueryString = neuvooQueryString.concat(`&ip=${searchCriteria.ip}&useragent=${searchCriteria.userAgent}&k=${searchCriteria.searchTerm}&country=${searchCriteria.country}`);
 
 	// Adding location information
 	neuvooQueryString = neuvooQueryString.concat(`&${locationString}`);
+	neuvooQueryString = neuvooQueryString.concat(`&${paginationString}`);
 
 	return neuvooQueryString;
 }
@@ -42,8 +46,9 @@ const createJobSearchDTO = (queryParams: {string: string}) => {
 
 	integerKeys.forEach((key) =>{
 		if (!queryParams.hasOwnProperty(key)){
-			if (key == 'pages'){queryParams[key]=1;}
+			if (key == 'page'){queryParams[key]=0;}
 			if (key == 'jobs_per_page'){queryParams[key]=10;}
+			if (key == 'radius'){queryParams[key]=15}
 		}else{
 			queryParams[key] = +queryParams[key];
 		}
@@ -57,8 +62,7 @@ const createJobSearchDTO = (queryParams: {string: string}) => {
 	searchObject.ip = queryParams['ip'];
 
 	// optinal feilds that are injected by the validator(incase they are missing)
-	console.log(queryParams);
-	searchObject.page = queryParams['pages'];
+	searchObject.page = queryParams['page'];
 	searchObject.jobsPerPage = queryParams['jobs_per_page'];
 
 

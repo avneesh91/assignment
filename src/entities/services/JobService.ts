@@ -20,6 +20,7 @@ class JobService implements JobServiceInterface{
 
 	        const queryParams = getNeuvooQueryStringFromDTO(searchCriteria);
 		const queryString = `${neuvooApiEndPoint}${queryParams}`;
+		console.log(queryString);
 
 		let fetchPromise =  fetch(queryString)
 			.then(response => {
