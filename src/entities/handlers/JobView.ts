@@ -33,13 +33,8 @@ class JobView implements BaseRestViewInterface{
 			return;
 		}
 
-		// create DTO
 		const jobResult = this.jobService.getJobs(searchObject);
-		jobResult.then((jobs) =>{
-			res.status(200).send({"Message": jobResult});
-			console.log(jobResult);
-
-		});
+		jobResult.then((jobs) =>{res.status(200).send({"data": jobs, "err": {}});});
 	}
 }
 
