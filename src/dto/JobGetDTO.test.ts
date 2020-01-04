@@ -2,7 +2,7 @@ import  {assert, expect} from 'chai';
 import {NeuvooJobResultDTO} from "./NeuvooJobResultDTO";
 import {createJobGetDTOFromNeuvooDTO, JobGetDTO} from "./JobGetDTO";
 
-describe('NuevooIntegration', function() {
+describe('NuevooIntegration - Make JobGetDTO from NeuvooJobResultDTO', function() {
 	it('Get JobGet object from Neuvoo Data', function() {
 		let neuvooJobResultDTO = new NeuvooJobResultDTO()
 

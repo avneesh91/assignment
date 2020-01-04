@@ -3,10 +3,9 @@ import {NeuvooJobResultDTO, createNeuvooJobResultDTO} from "../../dto/NeuvooJobR
 import {JobGetDTO, createJobGetDTOFromNeuvooDTO} from "../../dto/JobGetDTO";
 import {injectable} from "inversify";
 import {JobServiceInterface} from "../../interfaces";
-import fetch from 'node-fetch';
+import 'isomorphic-fetch';
 
-
-const neuvooApiEndPoint = 'https://neuvoo.com/services/api-new/search?';
+export const neuvooApiEndPoint = 'https://neuvoo.com/services/api-new/search?';
 
 @injectable()
 class JobService implements JobServiceInterface{
@@ -20,8 +19,6 @@ class JobService implements JobServiceInterface{
 
 	        const queryParams = getNeuvooQueryStringFromDTO(searchCriteria);
 		const queryString = `${neuvooApiEndPoint}${queryParams}`;
-		console.log(queryString);
-
 		let fetchPromise =  fetch(queryString)
 			.then(response => {
 				return response.json();

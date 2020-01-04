@@ -15,7 +15,7 @@ class NeuvooJobResultDTO{
 	public currency: string;
 }
 
-const createNeuvooJobResultDTO = (neuvooJobResult: {string: string}) => {
+const createNeuvooJobResultDTO = (neuvooJobResult) => {
 	let neuvooJobResultDTO = new NeuvooJobResultDTO()
 
 	neuvooJobResultDTO.jobKey = neuvooJobResult['jobkey'];
