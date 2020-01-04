@@ -21,6 +21,11 @@ http://localhost:3000/jobs?searchTerm=Waiter&country=US&ip=1.1.1.1&user_agent=Ra
 ## Testing
 Every folder has a *.test.ts file which contains the tests for the file name it corresponds to.
 
+To run tests use the following command
+```
+npm run test
+```
+
 ## General Layout
 The application follows Dependency injection to resolve all dependencies. The Main express App is also instatiated via dependency inject. I have used inversify for DI.
 
