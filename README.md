@@ -8,7 +8,7 @@ I also choose typescript since this was a backend application, and I can benefit
 
 ## Running the application
 
-To start the application you need to run the following commands(This assumes you have node v8.12.0 installed on your system). 
+To start the application you need to run the following commands(This assumes you have node v8.12.0 installed on your system).
 ```
 npm install
 npm run build && npm run start
@@ -33,7 +33,7 @@ The app is divided into the following major folders
 
 - **src/dto**: This contains all the object which are used for carrying around the data from one service to another.
 - **src/interfaces**: This contains all the interface objects which are required for the creation of the app.
-    -  **src/interfaces/services**: These are the domain services interfaces. 
+    -  **src/interfaces/services**: These are the domain services interfaces.
     -  **src/interfaces/handlers**: This contains the interface for http handlers.
     -  **src/interfaces/application**: This contains the interface for the HTTP application.
 
@@ -73,4 +73,17 @@ src
 │       └── JobServiceInterface.ts
 └── server.ts
 ```
+
+
+## Things I would have done better (if I had more time.)
+
+-   Write Integration tests
+-   Write contract tests
+-   Figure out linting for typescript.
+-   Write documentation in the Typescriptish way(if any), and may be look at auto generating docs.
+-   Improve test coverage.
+
+## Things I would have done better (if this was going to production)
+- Setup ci-cd
+- Setup code quality gates with Sonar.
 
